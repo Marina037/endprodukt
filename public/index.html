@@ -1,17 +1,40 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
-</html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stationboard</title>
+    <script src="https://unpkg.com/vue@next"defer></script>
+    <script src="/app.js" defer></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="StationBoard">
+        <div id="select">
+            <label for="bahnhof">Bahnhof</label>
+            <input type="text" id="bahnhof" v-model="ort">
+            <button v-on:click="loadConnections">laden</button>
+        </div>
+        <section class="table-fixed-head">
+            <table id="time-table">
+                <tbody id="table-body">
+                    <tr v-for="connection in connections">
+                        <td>{{ timestamp2time(connection.stop.departureTimestamp*1000) }}</td>
+                        <td>{{ connection.to }}</td>
+                        <td>{{ connection.stop.platform }}</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>Uhrzeit</th>
+                        <th>Richtung</th>
+                        <th>Gleiss</th>
+                    </tr>
+                </thead>
+                <caption><h1>Stationboard {{ ort }}</h1></caption>
+            </table>
+        </section>
+    </div>
+</body>
+</html> 
