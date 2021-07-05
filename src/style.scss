@@ -9,7 +9,6 @@ body {
     background-attachment: fixed;
     background-position: center center;
     background-size: cover;
-}
 
 #select {
     display: none;
@@ -51,9 +50,10 @@ caption {
 }
 caption {
     top:0;
-}
+
 thead th {
     top:70px;
+}
 }
 tbody {
     overflow-y: scroll;
@@ -61,4 +61,5 @@ tbody {
 th,td {
     border:3px solid white;
     padding: 10px;
+}
 }
